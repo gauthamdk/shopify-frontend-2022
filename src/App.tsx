@@ -35,6 +35,7 @@ function App() {
       <h1 className="title">Spacestagram</h1>
       <h2 className="subtitle">Images from Curiosity rover</h2>
       <div style={{ marginLeft: "1rem", marginRight: "1rem" }}>
+        {console.log(photos)}
         <Row className="imageRow">
           {loading ? (
             <Loading></Loading>
@@ -46,6 +47,7 @@ function App() {
                     title={photo.camera.full_name}
                     date={photo.earth_date}
                     image={photo.img_src}
+                    alt={`${photo.rover.name} with ${photo.camera.full_name} taken on ${photo.earth_date}`}
                   ></ImageCard>
                 </Col>
               );

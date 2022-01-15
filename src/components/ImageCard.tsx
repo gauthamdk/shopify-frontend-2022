@@ -9,9 +9,10 @@ interface CardProps {
   title: string;
   date: string;
   image: string;
+  alt: string;
 }
 
-export default function ImageCard({ title, date, image }: CardProps) {
+export default function ImageCard({ title, date, image, alt }: CardProps) {
   const toggleLike = () => {
     setLike(!like);
   };
@@ -26,7 +27,12 @@ export default function ImageCard({ title, date, image }: CardProps) {
       }}
       className="my-3"
     >
-      <Card.Img variant="top" src={image} style={{ height: "15rem" }} />
+      <Card.Img
+        variant="top"
+        src={image}
+        alt={alt}
+        style={{ height: "15rem" }}
+      />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{date}</Card.Text>
