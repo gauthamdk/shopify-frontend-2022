@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
 interface CardProps {
   title: string;
@@ -25,7 +28,11 @@ export default function ImageCard({ title, date, image }: CardProps) {
         <Card.Title>{title}</Card.Title>
         <Card.Text>{date}</Card.Text>
         <Button variant="danger" onClick={toggleLike}>
-          {like ? "Unlike" : "Like"}
+          {like ? (
+            <FontAwesomeIcon icon={faHeart} />
+          ) : (
+            <FontAwesomeIcon icon={farHeart} />
+          )}
         </Button>
       </Card.Body>
     </Card>
