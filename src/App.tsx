@@ -19,8 +19,10 @@ function App() {
   useEffect(() => {
     let mounted = true;
     getImages().then((images) => {
-      setLoading(false);
-      setPhotos(images.photos);
+      if (mounted) {
+        setPhotos(images.photos);
+        setLoading(false);
+      }
     });
     return () => {
       mounted = false;
@@ -47,7 +49,7 @@ function App() {
                     title={photo.camera.full_name}
                     date={photo.earth_date}
                     image={photo.img_src}
-                    alt={`${photo.rover.name} with ${photo.camera.full_name} taken on ${photo.earth_date}`}
+                    alt={`Photo taken by ${photo.rover.name} with ${photo.camera.full_name} taken on ${photo.earth_date}`}
                   ></ImageCard>
                 </Col>
               );

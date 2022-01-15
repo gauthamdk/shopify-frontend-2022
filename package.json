@@ -2,6 +2,9 @@
   "name": "shopify-frontend-2022",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "17.3.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
