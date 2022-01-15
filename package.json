@@ -5,7 +5,7 @@
   "engines": {
     "node": "17.x"
   },
-  "resolutions": {
+  "overrides": {
     "mini-css-extract-plugin": "2.4.5"
   },
   "dependencies": {
