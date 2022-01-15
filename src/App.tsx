@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import ImageCard from "./components/ImageCard";
+import Loading from "./components/Loading";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./App.css";
@@ -17,13 +18,17 @@ const getImages = async () => {
 function App() {
   useEffect(() => {
     let mounted = true;
-    getImages().then((images) => setPhotos(images.photos));
+    getImages().then((images) => {
+      setLoading(false);
+      setPhotos(images.photos);
+    });
     return () => {
       mounted = false;
     };
   }, []);
 
   const [photos, setPhotos] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   return (
     <Container className="App">
@@ -31,7 +36,9 @@ function App() {
       <h1 className="title">Spacestagram</h1>
       <h2 className="subtitle">Images from Curiosity rover</h2>
       <Row>
-        {photos.length > 0 ? (
+        {loading ? (
+          <Loading></Loading>
+        ) : (
           photos.map((photo) => {
             return (
               <Col key={photo.id}>
@@ -43,8 +50,6 @@ function App() {
               </Col>
             );
           })
-        ) : (
-          <></>
         )}
       </Row>
     </Container>

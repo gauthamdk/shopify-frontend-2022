@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
@@ -7,7 +7,14 @@ interface CardProps {
   date: string;
   image: string;
 }
+
 export default function ImageCard({ title, date, image }: CardProps) {
+  const toggleLike = () => {
+    setLike(!like);
+  };
+
+  const [like, setLike] = useState(false);
+
   return (
     <Card
       style={{ width: "18rem", backgroundColor: "#dadce0" }}
@@ -17,7 +24,9 @@ export default function ImageCard({ title, date, image }: CardProps) {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{date}</Card.Text>
-        <Button variant="danger">Like</Button>
+        <Button variant="danger" onClick={toggleLike}>
+          {like ? "Unlike" : "Like"}
+        </Button>
       </Card.Body>
     </Card>
   );

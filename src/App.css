@@ -11,12 +11,16 @@ body {
   background-color: #282c34;
 }
 
+.App {
+  background-color: #282c34;
+}
+
 .title {
   color: rgb(220, 215, 189);
   text-align: center;
 }
 
 .subtitle {
-  color: rgb(220, 215, 189);
+  color: rgb(230, 101, 54);
   text-align: right;
 }
