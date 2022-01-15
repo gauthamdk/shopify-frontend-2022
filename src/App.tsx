@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Container from "react-bootstrap/Container";
 import axios from "axios";
-import logo from "./logo.svg";
+import ImageCard from "./components/ImageCard";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import "./App.css";
 
 const getImages = async () => {
@@ -12,28 +15,39 @@ const getImages = async () => {
 };
 
 function App() {
+  useEffect(() => {
+    let mounted = true;
+    getImages().then((images) => setPhotos(images.photos));
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const [photos, setPhotos] = useState<any[]>([]);
 
   return (
-    <>
+    <Container className="App">
       {console.log(photos)}
-      <div className="App">Nasa images page</div>
-      {photos.length > 0 ? (
-        photos.map((photo) => {
-          return <img src={photo.img_src} />;
-        })
-      ) : (
-        <></>
-      )}
-      <button
-        onClick={async () => {
-          const images = await getImages();
-          setPhotos(images.photos);
-        }}
-      >
-        Submit
-      </button>
-    </>
+      <h1 className="title">Spacestagram</h1>
+      <h2 className="subtitle">Images from Curiosity rover</h2>
+      <Row>
+        {photos.length > 0 ? (
+          photos.map((photo) => {
+            return (
+              <Col key={photo.id}>
+                <ImageCard
+                  title={photo.camera.full_name}
+                  date={photo.earth_date}
+                  image={photo.img_src}
+                ></ImageCard>
+              </Col>
+            );
+          })
+        ) : (
+          <></>
+        )}
+      </Row>
+    </Container>
   );
 }
 
