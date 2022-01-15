@@ -32,26 +32,27 @@ function App() {
 
   return (
     <Container className="App">
-      {console.log(photos)}
       <h1 className="title">Spacestagram</h1>
       <h2 className="subtitle">Images from Curiosity rover</h2>
-      <Row>
-        {loading ? (
-          <Loading></Loading>
-        ) : (
-          photos.map((photo) => {
-            return (
-              <Col key={photo.id}>
-                <ImageCard
-                  title={photo.camera.full_name}
-                  date={photo.earth_date}
-                  image={photo.img_src}
-                ></ImageCard>
-              </Col>
-            );
-          })
-        )}
-      </Row>
+      <div style={{ marginLeft: "1rem", marginRight: "1rem" }}>
+        <Row className="imageRow">
+          {loading ? (
+            <Loading></Loading>
+          ) : (
+            photos.map((photo) => {
+              return (
+                <Col key={photo.id} className="cardCol">
+                  <ImageCard
+                    title={photo.camera.full_name}
+                    date={photo.earth_date}
+                    image={photo.img_src}
+                  ></ImageCard>
+                </Col>
+              );
+            })
+          )}
+        </Row>
+      </div>
     </Container>
   );
 }

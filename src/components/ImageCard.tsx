@@ -20,8 +20,11 @@ export default function ImageCard({ title, date, image }: CardProps) {
 
   return (
     <Card
-      style={{ width: "18rem", backgroundColor: "#dadce0" }}
-      className="my-2"
+      style={{
+        width: "20rem",
+        backgroundColor: "#dadce0",
+      }}
+      className="my-3"
     >
       <Card.Img variant="top" src={image} style={{ height: "15rem" }} />
       <Card.Body>

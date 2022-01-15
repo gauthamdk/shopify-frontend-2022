@@ -1,26 +1,33 @@
 html,
 body {
-  overflow: scroll;
-}
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-#root {
   background-color: #282c34;
 }
 
 .App {
   background-color: #282c34;
+  min-width: 100%;
+}
+
+.imageRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardCol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
   color: rgb(220, 215, 189);
   text-align: center;
+  padding: 1rem;
 }
 
 .subtitle {
   color: rgb(230, 101, 54);
   text-align: right;
+  margin-right: 10px;
 }
