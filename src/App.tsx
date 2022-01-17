@@ -37,7 +37,6 @@ function App() {
       <h1 className="title">Spacestagram</h1>
       <h2 className="subtitle">Images from Curiosity rover</h2>
       <div style={{ marginLeft: "1rem", marginRight: "1rem" }}>
-        {console.log(photos)}
         <Row className="imageRow">
           {loading ? (
             <Loading></Loading>
